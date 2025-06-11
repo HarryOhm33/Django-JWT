@@ -20,6 +20,7 @@ This is a simple authentication system built using Django, MongoEngine, and JWT 
 - REST API with Django REST Framework
 
 ## 🗂️ Project Structure
+
 ```
 
 Jwt-Auth/
@@ -41,11 +42,16 @@ Create a `.env` file inside `core/env/` with:
 
 ```
 
-SECRET_KEY=your_secret_key_here
-EMAIL_HOST_USER=[your_email@example.com](mailto:your_email@example.com)
-EMAIL_HOST_PASSWORD=your_email_password
+EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_USE_TLS=True
+EMAIL_HOST_USER=your_otp_delivery_email
+EMAIL_HOST_PASSWORD=your_app_password
+MONGO_URI=your_mongo_uri
+JWT-SECRET=your_secret_key_here
 
-````
+```
 
 Make sure it's **not committed** by including `env/` in your `.gitignore`.
 
@@ -66,20 +72,20 @@ Make sure it's **not committed** by including `env/` in your `.gitignore`.
 ```bash
 git clone https://github.com/yourusername/jwt-auth-django.git
 cd jwt-auth-django
-````
+```
 
 ### 2. Create virtual environment
 
 ```bash
 python -m venv jwtenv
 source jwtenv/bin/activate  # On Windows: jwtenv\Scripts\activate
-````
+```
 
 ### 3. Install dependencies
 
 ```bash
 pip install -r requirements.txt
-````
+```
 
 ### 4. Add your .env file as described above
 
@@ -87,7 +93,7 @@ pip install -r requirements.txt
 
 ```bash
 python manage.py runserver
-````
+```
 
 ## 📦 Dependencies
 
@@ -117,4 +123,3 @@ This project is open source and free to use.
 ## 👨‍💻 Author
 
 Developed by [Your Name](https://github.com/yourusername)
-
