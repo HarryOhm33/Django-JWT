@@ -61,29 +61,29 @@ Make sure it's **not committed** by including `env/` in your `.gitignore`.
 
 ## 🧾 Setup Instructions
 
-## 1. Clone the repo
+### 1. Clone the repo
 
 ```bash
 git clone https://github.com/yourusername/jwt-auth-django.git
 cd jwt-auth-django
 ````
 
-# 2. Create virtual environment
+### 2. Create virtual environment
 
 ```bash
 python -m venv jwtenv
 source jwtenv/bin/activate  # On Windows: jwtenv\Scripts\activate
 ````
 
-# 3. Install dependencies
+### 3. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ````
 
-# 4. Add your .env file as described above
+### 4. Add your .env file as described above
 
-# 5. Run the server
+### 5. Run the server
 
 ```bash
 python manage.py runserver
