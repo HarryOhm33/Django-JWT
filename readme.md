@@ -61,7 +61,6 @@ Make sure it's **not committed** by including `env/` in your `.gitignore`.
 
 ## 🧾 Setup Instructions
 
-```bash
 # 1. Clone the repo
 git clone https://github.com/yourusername/jwt-auth-django.git
 cd jwt-auth-django
@@ -77,7 +76,6 @@ pip install -r requirements.txt
 
 # 5. Run the server
 python manage.py runserver
-````
 
 ## 📦 Dependencies
 
@@ -108,9 +106,3 @@ This project is open source and free to use.
 
 Developed by [Your Name](https://github.com/yourusername)
 
-```
-
----
-
-Let me know if you want to include Postman docs, Swagger, or GitHub Actions setup.
-```
