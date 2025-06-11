@@ -69,16 +69,25 @@ cd jwt-auth-django
 ````
 
 # 2. Create virtual environment
+
+```bash
 python -m venv jwtenv
 source jwtenv/bin/activate  # On Windows: jwtenv\Scripts\activate
+````
 
 # 3. Install dependencies
+
+```bash
 pip install -r requirements.txt
+````
 
 # 4. Add your .env file as described above
 
 # 5. Run the server
+
+```bash
 python manage.py runserver
+````
 
 ## 📦 Dependencies
 
