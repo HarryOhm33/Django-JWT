@@ -70,8 +70,8 @@ Make sure it's **not committed** by including `env/` in your `.gitignore`.
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/yourusername/jwt-auth-django.git
-cd jwt-auth-django
+git clone https://github.com/HarryOhm33/Djano-JWT.git
+cd Django-JWT
 ```
 
 ### 2. Create virtual environment
@@ -122,4 +122,4 @@ This project is open source and free to use.
 
 ## 👨‍💻 Author
 
-Developed by [Your Name](https://github.com/yourusername)
+Developed by [Hari Om](https://github.com/HarryOhm33)
