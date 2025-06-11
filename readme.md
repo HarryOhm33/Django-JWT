@@ -1,8 +1,3 @@
-Here's a sample `README.md` file tailored for your JWT-based authentication project using **Django + MongoEngine**:
-
----
-
-```markdown
 # Django JWT Auth API 🔐
 
 This is a simple authentication system built using Django, MongoEngine, and JWT (JSON Web Tokens). It supports user registration with OTP email verification, login, session management, and logout functionality.
