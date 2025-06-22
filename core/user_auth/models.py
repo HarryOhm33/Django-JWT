@@ -1,6 +1,7 @@
 from mongoengine import Document, EmailField, StringField, BooleanField, DateTimeField
 from datetime import datetime, timedelta
 
+
 class User(Document):
     name = StringField(required=True)
     email = EmailField(required=True, unique=True)
@@ -8,7 +9,8 @@ class User(Document):
     is_verified = BooleanField(default=False)
     created_at = DateTimeField(default=datetime.now)
 
-    meta = {'collection': 'users'}
+    meta = {"collection": "users"}
+
 
 class Otp(Document):
     email = StringField(required=True)
@@ -17,14 +19,10 @@ class Otp(Document):
     expires_at = DateTimeField(default=lambda: datetime.now() + timedelta(minutes=5))
 
     meta = {
-        'collection': 'otps',
-        'indexes': [
-            {
-                'fields': ['created_at'],
-                'expireAfterSeconds': 300
-            }
-        ]
+        "collection": "otps",
+        "indexes": [{"fields": ["created_at"], "expireAfterSeconds": 300}],
     }
+
 
 class Session(Document):
     email = StringField(required=True)
@@ -32,10 +30,10 @@ class Session(Document):
     created_at = DateTimeField(default=datetime.now)
 
     meta = {
-        'indexes': [
+        "indexes": [
             {
-                'fields': ['created_at'],
-                'expireAfterSeconds': 604800  # 7 days in seconds
+                "fields": ["created_at"],
+                "expireAfterSeconds": 604800,  # 7 days in seconds
             }
         ]
     }
