@@ -1,4 +1,11 @@
-from mongoengine import Document, EmailField, StringField, BooleanField, DateTimeField
+from mongoengine import (
+    Document,
+    EmailField,
+    StringField,
+    BooleanField,
+    DateTimeField,
+    ReferenceField,
+)
 from datetime import datetime, timedelta
 
 
@@ -25,7 +32,7 @@ class Otp(Document):
 
 
 class Session(Document):
-    email = StringField(required=True)
+    user = ReferenceField(User, required=True)
     token = StringField(required=True)
     created_at = DateTimeField(default=datetime.now)
 

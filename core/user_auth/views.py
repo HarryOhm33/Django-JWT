@@ -34,15 +34,16 @@ def signup(request):
 
     User.objects(email=email, is_verified=False).delete()
 
+    if User.objects(email=email, is_verified=True).first():
+        return Response({"error": "User already exists."}, status=400)
+
     otp = generate_otp()
 
     # password hashing
     hash_pass = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
 
-    user = User(name=name, email=email, password=hash_pass, is_verified=False)
-    otpdb = Otp(email=email, otp=otp)
-    user.save()
-    otpdb.save()
+    User(name=name, email=email, password=hash_pass, is_verified=False).save()
+    Otp(email=email, otp=otp).save()
 
     # Send OTP via email
     send_mail(
@@ -54,7 +55,8 @@ def signup(request):
     )
 
     return Response(
-        {"message": "OTP sent to your email."}, status=status.HTTP_201_CREATED
+        {"valid": True, "message": "OTP sent to your email."},
+        status=status.HTTP_201_CREATED,
     )
 
 
@@ -87,7 +89,9 @@ def verify_otp(request):
 
     Otp.objects(email=email).delete()  # Delete used OTP
 
-    return Response({"message": "OTP verified successfully. You can now log in."})
+    return Response(
+        {"valid": True, "message": "OTP verified successfully. You can now log in."}
+    )
 
 
 @api_view(["POST"])
@@ -117,7 +121,7 @@ def login(request):
     token = jwt.encode(payload, SECRET_KEY, algorithm="HS256")
 
     # Store token in Session model
-    Session(email=email, token=token).save()
+    Session(user=user, token=token).save()
 
     response = Response(
         {
@@ -175,7 +179,7 @@ def logout(request):
 
     response = Response(
         (
-            {"message": "Logged out successfully."}
+            {"valid": True, "message": "Logged out successfully."}
             if deleted
             else {"message": "Session not found."}
         ),
